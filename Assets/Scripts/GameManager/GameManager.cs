@@ -2,6 +2,7 @@
 
 public class GameManager : MonoBehaviour
 {
+
     [Header("Singleton")]
     public static GameManager instance;
     public static GameManager Instance { get { return instance; } }
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         instance = this;
+        gameTime = 0f;
     }
 
 
@@ -28,6 +30,12 @@ public class GameManager : MonoBehaviour
             RestatGame();
     }
 
+
+    public void StartGame()
+    {
+        gameTime = 1f;
+        gameStarted = true;
+    }
 
     public void EndGame()
     {

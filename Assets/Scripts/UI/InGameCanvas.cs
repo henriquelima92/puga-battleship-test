@@ -29,6 +29,7 @@ public class InGameCanvas : MonoBehaviour
     {
         mainMenuPanel.SetActive(false);
         levelStatusPanel.SetActive(true);
+        GameManager.Instance.StartGame();
     }
 
     private void GameOver()

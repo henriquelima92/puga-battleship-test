@@ -6,7 +6,7 @@ public class MainMenuPanel : MonoBehaviour
 {
     public void StartGame()
     {
-        InGameCanvas.OnGameStartEvent?.Invoke();
+        
     }
     public void EditShip()
     {

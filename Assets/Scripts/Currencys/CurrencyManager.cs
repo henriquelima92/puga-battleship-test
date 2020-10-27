@@ -25,5 +25,6 @@ public class CurrencyManager : MonoBehaviour
     public void AddCurrency(int valueToAdd)
     {
         totalCurrencys += valueToAdd;
+        CoinsPanel.OnCoinsIncreased?.Invoke(totalCurrencys);
     }
 }

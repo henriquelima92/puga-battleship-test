@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool endGame;
     [HideInInspector] public bool gameStarted;
 
+    [SerializeField]
+    private float countDownTime = 10f;
+
 
     void Awake()
     {
@@ -26,6 +29,16 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if(countDownTime <= 0)
+        {
+            EndGame();
+        }
+        else
+        {
+            countDownTime -= Time.deltaTime;
+            TimePanel.OnTimeChange?.Invoke(countDownTime);
+        }
+
         if (Input.GetButton("Cancel") && endGame)
             RestatGame();
     }

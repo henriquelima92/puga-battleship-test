@@ -62,7 +62,7 @@ public class ShipController : Status
 
     void Update()
     {
-        if (!GameManager.Instance.endGame)
+        if (!GameManager.Instance.endGame && GameManager.instance.gameStarted == true)
         {
             if (inStun)
             {

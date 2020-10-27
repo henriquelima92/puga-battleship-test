@@ -4,21 +4,34 @@ using UnityEngine;
 public class InGameCanvas : MonoBehaviour
 {
     public static Action OnGameOverEvent;
+    public static Action OnGameStartEvent;
 
     [SerializeField]
     private GameObject gameOverPanel;
+    [SerializeField]
+    private GameObject mainMenuPanel;
+    [SerializeField]
+    private GameObject levelStatusPanel;
 
     private void Awake()
     {
-        OnGameOverEvent += EnableGameOverPanel;
+        OnGameOverEvent += GameOver;
+        OnGameStartEvent += StartGame;
     }
 
     private void OnDestroy()
     {
-        OnGameOverEvent -= EnableGameOverPanel;
+        OnGameOverEvent -= GameOver;
+        OnGameStartEvent -= StartGame;
     }
 
-    private void EnableGameOverPanel()
+    private void StartGame()
+    {
+        mainMenuPanel.SetActive(false);
+        levelStatusPanel.SetActive(true);
+    }
+
+    private void GameOver()
     {
         gameOverPanel.SetActive(true);
     }

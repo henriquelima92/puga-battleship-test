@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [Header("Behaviour")]
     [HideInInspector] public float gameTime = 1;
     [HideInInspector] public bool endGame;
+    [HideInInspector] public bool gameStarted;
 
 
     void Awake()

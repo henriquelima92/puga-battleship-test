@@ -15,6 +15,10 @@ public class Status : MonoBehaviour
     protected int damage;
     protected int currentLife;
 
+    public int GetCurrentHealth()
+    {
+        return allStatus[healthLevel - 1].health;
+    }
 
     public void TakeDamage(float applyDamage)
     {

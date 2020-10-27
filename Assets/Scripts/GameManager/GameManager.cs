@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
         endGame = true;
         SpawnManager.Instance.spawnAble = false;
         gameTime = 0;
+
+        InGameCanvas.OnGameOverEvent?.Invoke();
     }
 
 

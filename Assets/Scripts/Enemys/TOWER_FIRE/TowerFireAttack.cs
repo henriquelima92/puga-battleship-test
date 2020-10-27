@@ -17,6 +17,7 @@ public class TowerFireAttack : MonoBehaviour {
         {
             ShipController ship = other.GetComponent<ShipController>();
             ship.TakeDamage(damage);
+            HealthPanel.OnHealthChange?.Invoke(ship.GetCurrentHealth());
         }
     }
 }

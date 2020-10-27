@@ -34,6 +34,7 @@ public class InGameCanvas : MonoBehaviour
 
     private void GameOver()
     {
+        levelStatusPanel.SetActive(false);
         gameOverPanel.SetActive(true);
     }
 }

@@ -35,6 +35,9 @@ public class GameManager : MonoBehaviour
     {
         gameTime = 1f;
         gameStarted = true;
+        ShipController playerShip = ship.GetComponent<ShipController>();
+        float currentPlayerHealth = playerShip.GetCurrentHealth();
+        HealthPanel.OnHealthSetup?.Invoke(currentPlayerHealth, currentPlayerHealth);
     }
 
     public void EndGame()

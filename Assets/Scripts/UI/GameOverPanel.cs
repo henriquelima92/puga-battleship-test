@@ -18,8 +18,7 @@ public class GameOverPanel : MonoBehaviour
     }
     public void MainMenuButton()
     {
-        Scene scene = SceneManager.GetSceneAt(0);
-        SceneManager.LoadScene(scene.name);
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
     public void QuitGameButton()
     {

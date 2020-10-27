@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
         endGame = true;
         SpawnManager.Instance.spawnAble = false;
         gameTime = 0;
-
+        DataManager.SaveTotalCoins(GetComponent<CurrencyManager>().totalCurrencys);
         InGameCanvas.OnGameOverEvent?.Invoke();
     }
 

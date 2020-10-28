@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool endGame;
     [HideInInspector] public bool gameStarted;
 
+    [Tooltip("This time is in seconds")]
     [SerializeField]
     private float countDownTime = 10f;
 
@@ -35,8 +36,11 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            countDownTime -= Time.deltaTime;
-            TimePanel.OnTimeChange?.Invoke(countDownTime);
+            if(endGame == false)
+            {
+                countDownTime -= Time.deltaTime;
+                TimePanel.OnTimeChange?.Invoke(countDownTime);
+            }
         }
 
         if (Input.GetButton("Cancel") && endGame)
@@ -59,7 +63,18 @@ public class GameManager : MonoBehaviour
         SpawnManager.Instance.spawnAble = false;
         gameTime = 0;
         DataManager.SaveTotalCoins(GetComponent<CurrencyManager>().totalCurrencys);
-        InGameCanvas.OnGameOverEvent?.Invoke();
+        ShipController playerShip = ship.GetComponent<ShipController>();
+        float currentPlayerHealth = playerShip.GetCurrentHealth();
+
+        if(currentPlayerHealth > 0)
+        {
+            InGameCanvas.OnGameWinEvent?.Invoke();
+        }
+        else
+        {
+            InGameCanvas.OnGameOverEvent?.Invoke();
+        }
+        
     }
 
 

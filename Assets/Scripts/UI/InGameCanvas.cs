@@ -4,15 +4,19 @@ using UnityEngine;
 public class InGameCanvas : MonoBehaviour
 {
     public static Action OnGameOverEvent;
+    public static Action OnGameWinEvent;
 
     [SerializeField]
     private GameObject gameOverPanel;
+    [SerializeField]
+    private GameObject gameWinPanel;
     [SerializeField]
     private GameObject levelStatusPanel;
 
     private void Awake()
     {
         OnGameOverEvent += GameOver;
+        OnGameWinEvent += GameWin;
     }
 
     private void Start()
@@ -23,6 +27,7 @@ public class InGameCanvas : MonoBehaviour
     private void OnDestroy()
     {
         OnGameOverEvent -= GameOver;
+        OnGameWinEvent -= GameWin;
     }
 
     private void StartGame()
@@ -35,5 +40,10 @@ public class InGameCanvas : MonoBehaviour
     {
         levelStatusPanel.SetActive(false);
         gameOverPanel.SetActive(true);
+    }
+    private void GameWin()
+    {
+        levelStatusPanel.SetActive(false);
+        gameWinPanel.SetActive(true);
     }
 }

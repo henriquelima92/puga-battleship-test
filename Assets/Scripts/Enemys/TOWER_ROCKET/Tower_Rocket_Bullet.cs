@@ -56,6 +56,7 @@ public class Tower_Rocket_Bullet : MonoBehaviour
                 {
                     ShipController ship = newTargets[i].GetComponent<ShipController>();
                     ship.TakeDamage(damage);
+                    HealthPanel.OnHealthChange?.Invoke(ship.GetCurrentHealth());
                 }
             }
 
@@ -70,6 +71,7 @@ public class Tower_Rocket_Bullet : MonoBehaviour
         foreach (GameObject ob in targets)
         {
             ob.GetComponent<Status>().TakeDamage(this.damage);
+
         }
 
         Destroy(this.gameObject);

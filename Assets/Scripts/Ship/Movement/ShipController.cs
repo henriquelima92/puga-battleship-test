@@ -47,7 +47,11 @@ public class ShipController : Status
     float currentSpecialRechargTime;
     float currentslowMotionTime;
 
-
+    private void Awake()
+    {
+        mySecondaryCannonType = (SecondaryCannonType)(PlayerPrefs.HasKey("selectedSecondaryCannonIndex") == true ? PlayerPrefs.GetInt("selectedSecondaryCannonIndex") : 0);
+        myDroneType = (DroneType)(PlayerPrefs.HasKey("selectedDroneIndex") == true ? PlayerPrefs.GetInt("selectedDroneIndex") : 0);
+    }
     void Start()
     {
         SetShootRate();
@@ -62,7 +66,7 @@ public class ShipController : Status
 
     void Update()
     {
-        if (!GameManager.Instance.endGame)
+        if (!GameManager.Instance.endGame && GameManager.instance.gameStarted == true)
         {
             if (inStun)
             {

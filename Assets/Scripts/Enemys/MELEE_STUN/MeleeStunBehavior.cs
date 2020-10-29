@@ -62,6 +62,7 @@ public class MeleeStunBehavior : EnemysBehavior {
             {
                 ShipController ship = hit[i].collider.GetComponent<ShipController>();
                 ship.TakeDamage(status[level - 1].meleeDamage);
+                HealthPanel.OnHealthChange?.Invoke(ship.GetCurrentHealth());
                 ship.EnableStun(status[level -1].stunTime);
             }
         }

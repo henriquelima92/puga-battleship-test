@@ -42,14 +42,16 @@ public class SpawnManager : MonoBehaviour
 
     void Update()
     {
-        currentTimeToSpawn += Time.deltaTime * GameManager.Instance.gameTime;
-
-        if (currentTimeToSpawn >= delayTimeToSpawn && currentEnemys < maxEnemys && spawnAble)
+        if(GameManager.instance.gameStarted == true)
         {
-            SpawnEnemys();
-            currentTimeToSpawn = 0;
-        }
+            currentTimeToSpawn += Time.deltaTime * GameManager.Instance.gameTime;
 
+            if (currentTimeToSpawn >= delayTimeToSpawn && currentEnemys < maxEnemys && spawnAble)
+            {
+                SpawnEnemys();
+                currentTimeToSpawn = 0;
+            }
+        }
     }
 
 

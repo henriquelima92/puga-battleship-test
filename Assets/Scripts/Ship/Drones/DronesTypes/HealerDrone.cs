@@ -38,6 +38,7 @@ public class HealerDrone : DroneBehavior
         if (currentShip.allStatus[currentShip.healthLevel - 1].health + status[level - 1].healthValueToRestore <= maxHealth)
         {
             currentShip.allStatus[currentShip.healthLevel - 1].health += status[level - 1].healthValueToRestore;
+            HealthPanel.OnHealthChange?.Invoke(currentShip.GetCurrentHealth());
             currentTimeToRestore = 0;
         }
     }

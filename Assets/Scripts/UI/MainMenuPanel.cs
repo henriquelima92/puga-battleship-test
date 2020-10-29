@@ -20,7 +20,7 @@ public class MainMenuPanel : MonoBehaviour
     }
     public void EditShip()
     {
-
+        MainMenuCanvas.OnEditShipEnabled?.Invoke();
     }
 
     public void QuitGame()
